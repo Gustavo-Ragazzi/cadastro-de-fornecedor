@@ -3,6 +3,7 @@ interface Form {
     type: string;
     name: string;
     id: string;
+    required?: boolean;
 }
 
 export default function Input(props: Form) {
@@ -17,6 +18,7 @@ export default function Input(props: Form) {
                 type={props.type}
                 name={props.name}
                 id={props.id}
+                required={props.required}
             />
         </div>
     );

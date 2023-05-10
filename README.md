@@ -22,10 +22,9 @@ As principais funcionalidades do projeto serão: <br>
 - Comentários e avaliações: adicionar um campo para os usuários deixarem comentários e avaliações sobre o fornecedor, o que pode ajudar a equipe a tomar decisões mais informadas no futuro.
 
 ## Campos de cadastro
-
-- CNPJ / CPF
 - Razão social
 - Nome fantasia
+- CNPJ / CPF
 - Telefone
 - Endereço
 - Número
@@ -38,4 +37,5 @@ As principais funcionalidades do projeto serão: <br>
 - Inscrição Estadual
 - Inscrição Municipal
 - E-mail
+
 - Contato (nome)
