@@ -20,3 +20,22 @@ As principais funcionalidades do projeto serão: <br>
 - Categorização de fornecedores: permitir que os usuários categorizem os fornecedores de acordo com a natureza dos serviços que oferecem, para facilitar a busca e organização das informações.
 
 - Comentários e avaliações: adicionar um campo para os usuários deixarem comentários e avaliações sobre o fornecedor, o que pode ajudar a equipe a tomar decisões mais informadas no futuro.
+
+## Campos de cadastro
+
+- CNPJ / CPF
+- Razão social
+- Nome fantasia
+- Telefone
+- Endereço
+- Número
+- Complemento
+- Bairro
+- Cidade
+- UF (estado)
+- CEP
+- País
+- Inscrição Estadual
+- Inscrição Municipal
+- E-mail
+- Contato (nome)
