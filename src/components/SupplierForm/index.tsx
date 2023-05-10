@@ -2,6 +2,11 @@ import Input from "../Input";
 
 export default function SupplierForm() {
     return (
-        <Input />
+        <Input
+            label="Fornecedor"
+            type="text"
+            name="fornecedor"
+            id="fornecedor"
+        />
     )
 }
