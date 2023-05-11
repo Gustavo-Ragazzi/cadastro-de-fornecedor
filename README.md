@@ -37,5 +37,4 @@ As principais funcionalidades do projeto serão: <br>
 - Inscrição Estadual
 - Inscrição Municipal
 - E-mail
-
 - Contato (nome)
