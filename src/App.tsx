@@ -1,9 +1,9 @@
-import SupplierForm from "./components/SupplierForm";
+import Main from "./components/Main";
 
 function App() {
     return (
       <div className="bg-gray-800 h-screen">
-        <SupplierForm />
+        <Main />
       </div>
   );
 }
