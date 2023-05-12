@@ -1,11 +1,31 @@
 import { IoMdAdd, IoMdCreate , IoMdTrash, IoMdSearch } from "react-icons/io";
-import example from "../example.json"
 import SupplierForm from "../SupplierForm";
 import { useState } from "react";
+
+interface Supplier {
+    razaoSocial: string,
+    nomeFantasia: string,
+    cpfCnpj: number,
+    telefone: number,
+    endereco: string,
+    numero: number,
+    complemento: string,
+    bairro: string,
+    cidade: string,
+    estado: string,
+    cep: number,
+    pais: string,
+    inscricaoEstadual?: number,
+    inscricaoMunicipal?: number,
+    email: string,
+    contato?: string
+}
 
 
 export default function Main() {
     const [showForm, setShowForm] = useState(false);
+    const [storageList, setStoragelist] = useState<Supplier[]>(JSON.parse(localStorage.getItem("formSupplier") ?? "[]"));
+
 
     function handleShowForm(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
@@ -48,11 +68,11 @@ export default function Main() {
                     </tr>
                 </thead>
                 <tbody>
-                    {example.map((item, index) => (
+                    {storageList.map((item, index) => (
                         <tr className={`${index % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}`}>
-                            <td className="text-left px-4 py-2">{item.razao_social}</td>
-                            <td className="text-left px-4 py-2">{item.nome_fantasia}</td>
-                            <td className="text-left px-4 py-2">{item.cnpj_cpf}</td>
+                            <td className="text-left px-4 py-2">{item.razaoSocial}</td>
+                            <td className="text-left px-4 py-2">{item.nomeFantasia}</td>
+                            <td className="text-left px-4 py-2">{item.cpfCnpj}</td>
                             <td className="text-left px-4 py-2">{item.telefone}</td>
                             <td className="text-left px-4 py-2">{item.email}</td>
                             <td>

@@ -7,7 +7,7 @@ const classDefault = "w-full bg-gray-50 border border-gray-300 text-gray-900 tex
 interface Supplier {
     razaoSocial: string,
     nomeFantasia: string,
-    cpf: number,
+    cpfCnpj: number,
     telefone: number,
     endereco: string,
     numero: number,
@@ -26,7 +26,7 @@ interface Supplier {
 export default function SupplierForm(props: any) {
     const [razaoSocial, setRazaoSocial] = useState("");
     const [nomeFantasia, setNomeFantasia] = useState("");
-    const [cpf, setCpf] = useState(0);
+    const [cpfCnpj, setCpfCnpj] = useState(0);
     const [telefone, setTelefone] = useState(0);
     const [endereco, setEndereco] = useState("");
     const [numero, setNumero] = useState(0);
@@ -63,10 +63,10 @@ export default function SupplierForm(props: any) {
         {
             label: "CPF / CNPJ",
             type: "number",
-            name: "cpf-cppj",
+            name: "cpf-cnpj",
             id: "cpf-cnpj",
             classname: classDefault,
-            onChange: (e: React.ChangeEvent<HTMLInputElement>) => setCpf(parseInt(e.target.value)),
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) => setCpfCnpj(parseInt(e.target.value)),
             required: true
         },
         {
@@ -190,13 +190,15 @@ export default function SupplierForm(props: any) {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const supplier: Supplier = {razaoSocial, nomeFantasia, cpf, telefone, endereco, numero, complemento, bairro, cidade, estado, cep, pais, inscricaoEstadual, inscricaoMunicipal, email, contato}
-
-        console.log(supplier)
+        const supplier: Supplier = {razaoSocial: razaoSocial, nomeFantasia: nomeFantasia, cpfCnpj: cpfCnpj, telefone: telefone, endereco: endereco, numero: numero, complemento: complemento, bairro: bairro, cidade: cidade, estado: estado, cep: cep, pais: pais, inscricaoEstadual:  inscricaoEstadual, inscricaoMunicipal: inscricaoMunicipal, email: email, contato: contato}
+        
+        const currentList = JSON.parse(localStorage.getItem("formSupplier") ?? "[]")
+        const updatedList = [ ...currentList, supplier ]
+        localStorage.setItem("formSupplier", JSON.stringify(updatedList));
     }
 
     return (
-        <div className="overflow-y-auto w-1/2 bg-gray-600 absolute inset-0 mx-auto my-5 p-5 rounded-lg shadow-lg">
+        <div className="overflow-y-auto w-2/3 lg:w-1/2 bg-gray-600 absolute inset-0 mx-auto my-5 p-5 rounded-lg shadow-lg">
             <button 
                 className="float-right hover:bg-gray-500 active:bg-gray-400 rounded-full p-1"
                 onClick={props.handleShowForm}
