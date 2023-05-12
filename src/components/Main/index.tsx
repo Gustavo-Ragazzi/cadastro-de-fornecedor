@@ -1,10 +1,37 @@
-import { IoMdAdd, IoMdCreate , IoMdTrash } from "react-icons/io";
+import { IoMdAdd, IoMdCreate , IoMdTrash, IoMdSearch } from "react-icons/io";
 import example from "../example.json"
+
+function handleShowForm(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    alert("show form")
+}
+
+function handleEdit(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    alert("edit")
+}
+
+function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    alert("delete")
+}
+
+function handleShowMore(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    alert("show more")
+}
 
 export default function Main() {
     return (
-        <>
-            <h1 className="text-white text-3xl p-5">Fornecedores</h1>
+        <>  
+            <div className="flex items-center justify-between px-6">
+                <h1 className="text-white text-3xl p-5">Fornecedores</h1>
+                <button 
+                    className="rounded-full bg-green-500 hover:bg-green-400 active:bg-green-300"
+                    onClick={handleShowForm}
+                    ><IoMdAdd className="m-1 text-lg"/>
+                </button>
+            </div>
             <table className="text-white w-full">
                 <thead>
                     <tr>
@@ -13,11 +40,6 @@ export default function Main() {
                         <th className="text-left px-4">CNPJ / CPF</th>
                         <th className="text-left px-4">Telefone</th>
                         <th className="text-left px-4">E-mail</th>
-                        <th className="text-left px-4">
-                            <button className="rounded-full bg-green-500 hover:bg-green-400 active:bg-green-300">
-                                <IoMdAdd className="m-1 text-lg"/>
-                            </button>
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,9 +52,9 @@ export default function Main() {
                             <td className="text-left px-4 py-2">{item.email}</td>
                             <td>
                                 <div className="flex gap-2 items-center justify-center">
-                                    <button className="">Ver Mais</button>
-                                    <button className="hover:text-green-500 active:text-green-300"><IoMdCreate className="text-lg "/></button>
-                                    <button className="hover:text-red-500 active:text-red-300"><IoMdTrash className="text-lg"/></button>
+                                    <button className="hover:text-green-500 active:text-green-300" onClick={handleShowMore}><IoMdSearch className="text-lg"/></button>
+                                    <button className="hover:text-green-500 active:text-green-300" onClick={handleEdit}><IoMdCreate className="text-lg"/></button>
+                                    <button className="hover:text-red-500 active:text-red-300" onClick={handleDelete}><IoMdTrash className="text-lg"/></button>
                                 </div>
                             </td>
                         </tr>
