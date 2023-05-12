@@ -1,3 +1,4 @@
+import { GrClose } from "react-icons/gr";
 import { useState } from "react";
 import Input from "../Input";
 
@@ -22,7 +23,7 @@ interface Supplier {
     contato?: string
 }
 
-export default function SupplierForm() {
+export default function SupplierForm(props: any) {
     const [razaoSocial, setRazaoSocial] = useState("");
     const [nomeFantasia, setNomeFantasia] = useState("");
     const [cpf, setCpf] = useState(0);
@@ -196,7 +197,11 @@ export default function SupplierForm() {
 
     return (
         <div className="overflow-y-auto w-1/2 bg-gray-600 absolute inset-0 mx-auto my-5 p-5 rounded-lg shadow-lg">
-            <form className="grid grid-cols-2 gap-8" key={"form"} onSubmit={handleSubmit}>
+            <button 
+                className="float-right hover:bg-gray-500 active:bg-gray-400 rounded-full p-1"
+                onClick={props.handleShowForm}
+            ><GrClose /></button>
+            <form className="grid grid-cols-1 lg:grid-cols-2 gap-7" key={"form"} onSubmit={handleSubmit}>
                 {formList.map((item) => {
                     return (
                         <Input
@@ -210,7 +215,7 @@ export default function SupplierForm() {
                         />
                     )
                 })}
-                <button type="submit" className="col-start-1 col-end-3 mx-auto font-semibold text-md uppercase shadow-md bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Cadastrar</button>
+                <button type="submit" className="lg:col-start-1 lg:col-end-3 mx-auto font-semibold text-md uppercase shadow-md bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Cadastrar</button>
             </form>
         </div>
     )

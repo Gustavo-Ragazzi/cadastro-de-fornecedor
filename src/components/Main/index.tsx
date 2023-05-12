@@ -66,7 +66,7 @@ export default function Main() {
                     ))}
                 </tbody>
             </table>
-            {showForm && <SupplierForm />}
+            {showForm && <SupplierForm handleShowForm={handleShowForm}/>}
         </>
     )
 }
