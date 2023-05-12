@@ -195,21 +195,23 @@ export default function SupplierForm() {
     }
 
     return (
-        <form className="grid grid-cols-2 gap-3" key={"form"} onSubmit={handleSubmit}>
-            {formList.map((item) => {
-                return (
-                    <Input
-                        className={item.classname}
-                        label={item.label}
-                        type={item.type}
-                        name={item.name}
-                        id={item.id}
-                        required={item.required}
-                        onChange={item.onChange}
-                    />
-                )
-            })}
-            <button type="submit" className="col-start-1 col-end-3 mx-auto font-semibold text-md uppercase shadow-md bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Cadastrar</button>
-        </form>
+        <div className="overflow-y-auto w-1/2 bg-gray-600 absolute inset-0 mx-auto my-5 p-5 rounded-lg shadow-lg">
+            <form className="grid grid-cols-2 gap-8" key={"form"} onSubmit={handleSubmit}>
+                {formList.map((item) => {
+                    return (
+                        <Input
+                            className={item.classname}
+                            label={item.label}
+                            type={item.type}
+                            name={item.name}
+                            id={item.id}
+                            required={item.required}
+                            onChange={item.onChange}
+                        />
+                    )
+                })}
+                <button type="submit" className="col-start-1 col-end-3 mx-auto font-semibold text-md uppercase shadow-md bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Cadastrar</button>
+            </form>
+        </div>
     )
 }

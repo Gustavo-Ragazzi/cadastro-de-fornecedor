@@ -1,27 +1,32 @@
 import { IoMdAdd, IoMdCreate , IoMdTrash, IoMdSearch } from "react-icons/io";
 import example from "../example.json"
+import SupplierForm from "../SupplierForm";
+import { useState } from "react";
 
-function handleShowForm(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    alert("show form")
-}
-
-function handleEdit(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    alert("edit")
-}
-
-function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    alert("delete")
-}
-
-function handleShowMore(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    alert("show more")
-}
 
 export default function Main() {
+    const [showForm, setShowForm] = useState(false);
+
+    function handleShowForm(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        showForm ? setShowForm(false) : setShowForm(true);
+    }
+
+    function handleEdit(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        alert("edit")
+    }
+    
+    function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        alert("delete")
+    }
+    
+    function handleShowMore(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        alert("show more")
+    }
+
     return (
         <>  
             <div className="flex items-center justify-between px-6">
@@ -61,6 +66,7 @@ export default function Main() {
                     ))}
                 </tbody>
             </table>
+            {showForm && <SupplierForm />}
         </>
     )
 }
