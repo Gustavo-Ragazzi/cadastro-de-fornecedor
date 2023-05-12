@@ -33,18 +33,21 @@ export default function Main() {
     }
 
     function handleEdit(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault();
-        alert("edit")
+        const id = e.currentTarget.id;
+        const index = parseInt(id.substring(4));
+        alert(index)
     }
     
     function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault();
-        alert("delete")
+        const id = e.currentTarget.id;
+        const index = parseInt(id.substring(6));
+        alert(index)
     }
     
     function handleShowMore(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault();
-        alert("show more")
+        const id = e.currentTarget.id;
+        const index = parseInt(id.substring(9));
+        alert(index)
     }
 
     return (
@@ -77,9 +80,9 @@ export default function Main() {
                             <td className="text-left px-4 py-2">{item.email}</td>
                             <td>
                                 <div className="flex gap-2 items-center justify-center">
-                                    <button className="hover:text-green-500 active:text-green-300" onClick={handleShowMore}><IoMdSearch className="text-lg"/></button>
-                                    <button className="hover:text-green-500 active:text-green-300" onClick={handleEdit}><IoMdCreate className="text-lg"/></button>
-                                    <button className="hover:text-red-500 active:text-red-300" onClick={handleDelete}><IoMdTrash className="text-lg"/></button>
+                                    <button id={`show-more${index}`} className="hover:text-green-500 active:text-green-300" onClick={handleShowMore}><IoMdSearch className="text-lg"/></button>
+                                    <button id={`edit${index}`} className="hover:text-green-500 active:text-green-300" onClick={handleEdit}><IoMdCreate className="text-lg"/></button>
+                                    <button id={`delete${index}`} className="hover:text-red-500 active:text-red-300" onClick={handleDelete}><IoMdTrash className="text-lg"/></button>
                                 </div>
                             </td>
                         </tr>
