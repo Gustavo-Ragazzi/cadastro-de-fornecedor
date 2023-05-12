@@ -41,7 +41,11 @@ export default function Main() {
     function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
         const id = e.currentTarget.id;
         const index = parseInt(id.substring(6));
-        alert(index)
+
+        const supplierList = JSON.parse(localStorage.getItem("formSupplier") ?? "[]");
+        supplierList.splice(index, 1);
+
+        localStorage.setItem("formSupplier", JSON.stringify(supplierList));
     }
     
     function handleShowMore(e: React.MouseEvent<HTMLButtonElement>) {
