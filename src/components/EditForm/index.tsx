@@ -236,7 +236,7 @@ export default function EditForm(props: any) {
                         />
                     )
                 })}
-                <button type="submit" className="lg:col-start-1 lg:col-end-3 mx-auto font-semibold text-md uppercase shadow-md bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Atualizar</button>
+                {!props.hideEditButton && <button type="submit" className="lg:col-start-1 lg:col-end-3 mx-auto font-semibold text-md uppercase shadow-md bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Atualizar</button>}
             </form>
         </div>
     )

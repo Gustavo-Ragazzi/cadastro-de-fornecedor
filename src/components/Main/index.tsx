@@ -1,6 +1,6 @@
 import { IoMdAdd, IoMdCreate , IoMdTrash, IoMdSearch } from "react-icons/io";
 import SupplierForm from "../SupplierForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EditForm from "../EditForm";
 
 interface Supplier {
@@ -27,8 +27,14 @@ export default function Main() {
     const [showForm, setShowForm] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
     const [editIndex, setEditIndex] = useState<number>();
+    const [hideEditButton, setHideEditButton] = useState(false);
     const [actualSupplier, setActualSupplier] = useState<Supplier>()
     const [storageList, setStoragelist] = useState<Supplier[]>(JSON.parse(localStorage.getItem("formSupplier") ?? "[]"));
+
+    useEffect(() => {
+        const supplierList = JSON.parse(localStorage.getItem("formSupplier") ?? "[]");
+        setStoragelist(supplierList)
+    }, [storageList])
 
 
     function handleShowForm(e: React.MouseEvent<HTMLButtonElement>) {
@@ -44,6 +50,7 @@ export default function Main() {
     function handleEdit(e: React.MouseEvent<HTMLButtonElement>) {
         const id = e.currentTarget.id;
         const index = parseInt(id.substring(4));
+        setHideEditButton(false);
         setActualSupplier(storageList[index]);
         setEditIndex(index);
         handleShowEditForm(e);
@@ -62,7 +69,9 @@ export default function Main() {
     function handleShowMore(e: React.MouseEvent<HTMLButtonElement>) {
         const id = e.currentTarget.id;
         const index = parseInt(id.substring(9));
-        alert(index)
+        setHideEditButton(true);
+        setActualSupplier(storageList[index]);
+        handleShowEditForm(e);
     }
 
     return (
@@ -105,7 +114,7 @@ export default function Main() {
                 </tbody>
             </table>
             {showForm && <SupplierForm handleShowForm={handleShowForm} />}
-            {showEditForm && <EditForm handleShowEditForm={handleShowEditForm} actualSupplier={actualSupplier} editIndex={editIndex} />}
+            {showEditForm && <EditForm handleShowEditForm={handleShowEditForm} actualSupplier={actualSupplier} editIndex={editIndex} hideEditButton={hideEditButton}/>}
         </>
     )
 }

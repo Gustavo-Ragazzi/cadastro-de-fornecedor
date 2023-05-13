@@ -1,2 +1,0 @@
-Resolver lógica do evento handleSubmit
-Resolver bug do onChange dos inputs
