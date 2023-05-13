@@ -6,6 +6,7 @@ interface Form {
     className: string;
     onChange: any;
     required?: boolean;
+    value?: any;
 }
 
 export default function Input(props: Form) {
@@ -24,6 +25,7 @@ export default function Input(props: Form) {
                 id={props.id}
                 required={props.required}
                 onChange={props.onChange}
+                value={props.value}
             />
         </div>
     );

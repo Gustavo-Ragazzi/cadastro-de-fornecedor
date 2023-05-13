@@ -1,6 +1,7 @@
 import { IoMdAdd, IoMdCreate , IoMdTrash, IoMdSearch } from "react-icons/io";
 import SupplierForm from "../SupplierForm";
 import { useState } from "react";
+import EditForm from "../EditForm";
 
 interface Supplier {
     razaoSocial: string,
@@ -24,6 +25,9 @@ interface Supplier {
 
 export default function Main() {
     const [showForm, setShowForm] = useState(false);
+    const [showEditForm, setShowEditForm] = useState(false);
+    const [editIndex, setEditIndex] = useState<number>();
+    const [actualSupplier, setActualSupplier] = useState<Supplier>()
     const [storageList, setStoragelist] = useState<Supplier[]>(JSON.parse(localStorage.getItem("formSupplier") ?? "[]"));
 
 
@@ -32,10 +36,17 @@ export default function Main() {
         showForm ? setShowForm(false) : setShowForm(true);
     }
 
+    function handleShowEditForm(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        showEditForm ? setShowEditForm(false) : setShowEditForm(true);
+    }
+
     function handleEdit(e: React.MouseEvent<HTMLButtonElement>) {
         const id = e.currentTarget.id;
         const index = parseInt(id.substring(4));
-        alert(index)
+        setActualSupplier(storageList[index]);
+        setEditIndex(index);
+        handleShowEditForm(e);
     }
     
     function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
@@ -93,7 +104,8 @@ export default function Main() {
                     ))}
                 </tbody>
             </table>
-            {showForm && <SupplierForm handleShowForm={handleShowForm}/>}
+            {showForm && <SupplierForm handleShowForm={handleShowForm} />}
+            {showEditForm && <EditForm handleShowEditForm={handleShowEditForm} actualSupplier={actualSupplier} editIndex={editIndex} />}
         </>
     )
 }
