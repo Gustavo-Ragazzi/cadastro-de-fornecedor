@@ -88,20 +88,20 @@ export default function Main() {
                 <thead>
                     <tr>
                         <th className="text-left px-4">Razão social</th>
-                        <th className="text-left px-4">Nome fantasia</th>
-                        <th className="text-left px-4">CNPJ / CPF</th>
-                        <th className="text-left px-4">Telefone</th>
-                        <th className="text-left px-4">E-mail</th>
+                        <th className="text-left px-4 hidden sm:table-cell">Nome fantasia</th>
+                        <th className="text-left px-4 hidden sm:table-cell">CNPJ / CPF</th>
+                        <th className="text-left px-4 hidden md:table-cell">Telefone</th>
+                        <th className="text-left px-4 hidden lg:table-cell">E-mail</th>
                     </tr>
                 </thead>
                 <tbody>
                     {storageList.map((item, index) => (
                         <tr className={`${index % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}`}>
                             <td className="text-left px-4 py-2">{item.razaoSocial}</td>
-                            <td className="text-left px-4 py-2">{item.nomeFantasia}</td>
-                            <td className="text-left px-4 py-2">{item.cpfCnpj}</td>
-                            <td className="text-left px-4 py-2">{item.telefone}</td>
-                            <td className="text-left px-4 py-2">{item.email}</td>
+                            <td className="text-left px-4 py-2 hidden sm:table-cell">{item.nomeFantasia}</td>
+                            <td className="text-left px-4 py-2 hidden sm:table-cell">{item.cpfCnpj}</td>
+                            <td className="text-left px-4 py-2 hidden md:table-cell">{item.telefone}</td>
+                            <td className="text-left px-4 py-2 hidden lg:table-cell">{item.email}</td>
                             <td>
                                 <div className="flex gap-2 items-center justify-center">
                                     <button id={`show-more${index}`} className="hover:text-green-500 active:text-green-300" onClick={handleShowMore}><IoMdSearch className="text-lg"/></button>
